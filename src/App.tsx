@@ -1,26 +1,27 @@
+// App.tsx
 import React from 'react';
-import logo from './logo.svg';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import RegistrationPage from './components/registration';
+import LoginPage from './components/login'
 import './App.css';
+import UserTable from './components/table';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RegistrationPage />
+    },
+    {
+      path: "/login",
+      element: <LoginPage />
+    },
+    {
+      path: "/users",
+      element: <UserTable />
+    }
+  ])
+  return (<div>
+    <RouterProvider router={router}/>
+  </div>);
+};
